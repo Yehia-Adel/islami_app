@@ -24,6 +24,7 @@ class _HadithPageState extends State<HadithPage> {
           image: DecorationImage(
               image: AssetImage(AppAssets.hadithBackground), fit: BoxFit.fill)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
@@ -39,8 +40,8 @@ class _HadithPageState extends State<HadithPage> {
                   },
                 ).toList(),
                 options: CarouselOptions(
-                  // height: 400,
-                  aspectRatio: 16 / 9,
+                height: 450,
+                aspectRatio: 16 / 9,
                   viewportFraction: 0.8,
                   initialPage: 0,
                   enableInfiniteScroll: true,
@@ -52,7 +53,8 @@ class _HadithPageState extends State<HadithPage> {
                   enlargeCenterPage: true,
                   enlargeFactor: 0.3,
                   scrollDirection: Axis.horizontal,
-                )),
+              ),
+            ),
           )
         ],
       ),
@@ -60,10 +62,8 @@ class _HadithPageState extends State<HadithPage> {
   }
 
   loadHadithData() async {
-    String content =
-        await rootBundle.loadString("assets/files/hadith/ahadeth.txt");
+    String content = await rootBundle.loadString("assets/files/ahadeth.txt");
     List<String> allSingleHadith = content.split('#');
-
     for (var element in allSingleHadith) {
       String singleHadith = element.trim();
 
@@ -76,6 +76,8 @@ class _HadithPageState extends State<HadithPage> {
           HadithData(titleHadith: titleHadith, contentHadith: contentHadith);
 
       hadithDataList.add(hadithData);
+
+      setState(() {});
     }
   }
 }

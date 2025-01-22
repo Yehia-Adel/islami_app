@@ -11,7 +11,7 @@ class TimeItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.symmetric(vertical: 60, horizontal: 10),
       // width: 100,
       // height: 130,
       decoration: BoxDecoration(

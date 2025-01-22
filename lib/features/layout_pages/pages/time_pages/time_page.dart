@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/features/layout_pages/pages/time_pages/widgets/time_item_card.dart';
 import 'package:islami/modules/time_salah.dart';
+
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/theme/app_colors.dart';
 
@@ -35,13 +36,26 @@ class TimePage extends StatelessWidget {
               color: AppColors.primaryColor,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: SizedBox(
-              height: 100,
-              child: ListView.builder(
-                  itemCount: salah.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      TimeItemCard(timeSalah: salah[index])),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    "Pray time",
+                    style: TextStyle(
+                        color: AppColors.secondaryColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: salah.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) =>
+                          TimeItemCard(timeSalah: salah[index])),
+                ),
+              ],
             ),
           ),
           SizedBox(
